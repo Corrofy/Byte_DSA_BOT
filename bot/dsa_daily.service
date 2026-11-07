@@ -1,0 +1,17 @@
+[Unit]
+Description=DSA_DAILY Discord Bot Service
+After=network.target
+
+[Service]
+Type=simple
+User=botuser
+WorkingDirectory=/opt/dsa_daily
+EnvironmentFile=/opt/dsa_daily/.env
+ExecStart=/opt/dsa_daily/.venv/bin/python -m bot.main
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
